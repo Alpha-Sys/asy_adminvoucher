@@ -88,7 +88,7 @@ function changeFnc( fncName )
             <tr>
                 <td class="edittext"></td>
                 [{if $sGenerate_Random_Success_Message}]
-                <td class="edittext" style="color: #00B910; padding-left: 8px"><img src="[{$oViewConf->getModuleUrl()}]asy_adminvoucher/out/admin/img/asy_tick.png" alt="success" title="success">[{$sGenerate_Random_Success_Message}]</td>
+                <td class="edittext" style="color: #00B910; padding-left: 8px"><img src="[{$oViewConf->getModuleUrl('asy_adminvoucher')}]/out/admin/img/asy_tick.png" alt="success" title="success">[{$sGenerate_Random_Success_Message}]</td>
                 [{else}]
                 <td class="edittext"></td>
                 [{/if}]
@@ -147,7 +147,7 @@ function changeFnc( fncName )
     </tr>
 </table>
 <div id="asy_background" style="text-align: right; right: 5px; bottom: 5px;">
-    <a href="http://www.alpha-sys.de" target="_blank" title="Alpha-Sys"><img src="[{$oViewConf->getModuleUrl()}]asy_adminvoucher/out/admin/img/alpha-sys.jpg" alt="Alpha-Sys" title="Alpha-Sys"></a>
+    <a href="http://www.alpha-sys.de" target="_blank" title="Alpha-Sys"><img src="[{$oViewConf->getModuleUrl('asy_adminvoucher')}]/out/admin/img/alpha-sys.jpg" alt="Alpha-Sys" title="Alpha-Sys"></a>
 </div>
 [{include file="bottomnaviitem.tpl"}]
 [{include file="bottomitem.tpl"}]
