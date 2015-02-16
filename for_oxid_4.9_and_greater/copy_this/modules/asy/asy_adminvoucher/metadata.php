@@ -17,14 +17,19 @@
  */
 $aModule = array(
     'id'           => 'asy_adminvoucher',
-    'title'        => 'Gutscheincode-Generierung',
+    'title'        => '<img src="../modules/asy/module_logo.png" alt="Alpha-Sys" title="Alpha-Sys"> Gutscheincode-Generierung',
     'description'  => 'Mit diesem Modul koennne Sie einstellen wie generierte Gutscheincodes aussehen sollen.',
-    'thumbnail'    => '',
+    'thumbnail'    => 'module_adminvoucher.png',
     'version'      => '1.8',
     'author'       => 'Alpha-Sys',
     'email'        => 'fabian.kunkler@alpha-sys.de',
     'url'          => 'http://www.alpha-sys.de',
     'extend'       => array(
-        'voucherserie_main' => 'asy_adminvoucher/admin/asy_adminvoucher__voucherserie_main'
+    ),
+    'files'        => array(
+        'asy_voucherserie_generate'     => 'asy/asy_adminvoucher/controllers/admin/asy_voucherserie_generate.php'
+    ),
+    'templates' => array(
+        'asy_voucherserie_generate.tpl' => 'asy/asy_adminvoucher/views/admin/asy_voucherserie_generate.tpl'
     )
 );
