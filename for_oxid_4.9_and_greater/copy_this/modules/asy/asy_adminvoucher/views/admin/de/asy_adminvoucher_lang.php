@@ -7,9 +7,8 @@
  *
  * @link        http://www.alpha-sys.de
  * @author      Fabian Kunkler <fabian.kunkler@alpha-sys.de>   
- * @copyright   (C) Alpha-Sys 2008-2011
- * @version     OXID eShop PE, EE
- * @version     09.01.2011  1.0 
+ * @copyright   (C) Alpha-Sys 2008-2016
+ * @version     05.03.2016  2.0
  */
 
 $sLangName  = "Deutsch";
@@ -17,8 +16,9 @@ $sLangName  = "Deutsch";
 // RESOURCE IDENTITFIER = STRING
 // -------------------------------
 $aLang = array(
-'charset'                                  => 'ISO-8859-15',
+'charset'                                  => 'UTF-8',
 'tbclvoucherserie_generate'                => 'Gutscheine generieren',
+'tbclvoucherserie_export'                  => 'Gutscheine exportieren',
 'ASY_VOUCHER_BATCH_GENERATE'               => 'Codes generieren',
 'ASY_VOUCHER_CODES'                        => 'Codes:',
 'HELP_ASY_VOUCHER_CODES'                   => 'Geben Sie hier alle Codes getrennt durch einen Zeilenumbruch ein.<br>
@@ -36,9 +36,12 @@ $aLang = array(
 'HELP_ASY_VOUCHER_CHARACTERS'              => 'Welche Zeichen sollen im Gutscheincode enthalten sein',
 'ASY_VOUCHER_BATCH_TITLE'                  => 'Batchgenerierung',
 'ASY_VOUCHER_RANDOM_TITLE'                 => 'Mustergenerierung',
-'HELP_ASY_VOUCHER_RANDOM'                  => 'Geben Sie die Zeichen an, welche in einem Code enthalten sein dürfen und generieren Sie die Codes nach Ihren Vorgaben. ',
-'HELP_ASY_VOUCHER_BATCH'                   => 'Sie können mehrere Codes angeben und in einem Durchlauf generieren lassen.',
+'HELP_ASY_VOUCHER_RANDOM'                  => 'Geben Sie die Zeichen an, welche in einem Code enthalten sein dÃ¼rfen und generieren Sie die Codes nach Ihren Vorgaben. ',
+'HELP_ASY_VOUCHER_BATCH'                   => 'Sie kÃ¶nnen mehrere Codes angeben und in einem Durchlauf generieren lassen.',
 'ASY_VOUCHER_PREFIX'                       => 'Gutschein-Pr&auml;fix',
 'HELP_ASY_VOUCHER_PREFIX'                  => 'Der Gutschein-Code setzt sich zusammen aus Pr&auml;fix gefolgt vom generierten Code',
+'ASY_VOUCHER_EXPORT_USED'                  => 'EingelÃ¶ste Gutscheine exportieren',
+'ASY_VOUCHER_GENERATED'                    => ' Codes erfolgreich generiert!',
+'ASY_VOUCHER_NO_ORDERS'                    => 'Keine Bestellungen mit dieser Gutscheinserie vorhanden!',
 );
 

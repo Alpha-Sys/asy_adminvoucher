@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This Software is property of Alpha-Sys and is protected by
  * copyright law - it is NOT Freeware.
@@ -8,9 +7,8 @@
  *
  * @link        http://www.alpha-sys.de
  * @author      Fabian Kunkler <fabian.kunkler@alpha-sys.de>   
- * @copyright   (C) Alpha-Sys 2008-2015
- * @version     OXID eShop PE, EE
- * @version     03.01.2015  1.8
+ * @copyright   (C) Alpha-Sys 2008-2016
+ * @version     05.03.2016  2.0
  */
 
 /**
@@ -47,7 +45,8 @@ class asy_voucherserie_generate extends oxAdminDetails {
                         $iCount++;
                     }
                 }
-                $this->_aViewData["sGenerate_Success_Message"] = $iCount++ . " Codes erfolgreich generiert!";
+                $oLang = oxRegistry::getLang();
+                $this->_aViewData["sGenerate_Success_Message"] = $iCount++ . $oLang->translateString('ASY_VOUCHER_GENERATED'); //" Codes erfolgreich generiert!";
             }
         }
     }
@@ -78,7 +77,8 @@ class asy_voucherserie_generate extends oxAdminDetails {
                     $iCount++;
                 }
             }
-            $this->_aViewData["sGenerate_Random_Success_Message"] = $iCount++ . " Codes erfolgreich generiert!";
+            $oLang = oxRegistry::getLang();
+            $this->_aViewData["sGenerate_Random_Success_Message"] = $iCount++ . $oLang->translateString('ASY_VOUCHER_GENERATED'); //" Codes erfolgreich generiert!";
         }
     }
 

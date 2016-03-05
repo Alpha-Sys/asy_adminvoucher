@@ -4,6 +4,7 @@
         <MAINMENU id="mxshopsett">
             <SUBMENU id="mxvouchers" cl="voucherserie" list="voucherserie_list">
                 <TAB id="tbclvoucherserie_generate" cl="asy_voucherserie_generate" />
+                <TAB id="tbclvoucherserie_export" cl="asy_voucherserie_export" />
             </SUBMENU>
         </MAINMENU>
     </OXMENU>
