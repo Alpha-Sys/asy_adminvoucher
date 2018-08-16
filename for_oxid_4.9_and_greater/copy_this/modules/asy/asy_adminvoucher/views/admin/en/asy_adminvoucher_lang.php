@@ -40,7 +40,8 @@ $aLang = array(
 'HELP_ASY_VOUCHER_BATCH'                   => 'You can enter several codes which are generated in one iteration.',
 'ASY_VOUCHER_PREFIX'                       => 'Code prefix',
 'HELP_ASY_VOUCHER_PREFIX'                  => 'The Code consists of prefix and code',
-'ASY_VOUCHER_EXPORT_USED'                  => 'Export used vouchers',
+'ASY_VOUCHER_EXPORT_USED'                  => 'Export used vouchers for this serie',
+'ASY_VOUCHER_EXPORT_USED_ALL'              => 'Export used vouchers for all series',
 'ASY_VOUCHER_GENERATED'                    => ' codes successfully generated!',
 'ASY_VOUCHER_NO_ORDERS'                    => 'There is no order with this voucher series!',
 );

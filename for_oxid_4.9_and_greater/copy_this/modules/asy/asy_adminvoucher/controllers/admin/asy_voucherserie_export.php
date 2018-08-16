@@ -43,13 +43,16 @@ class asy_voucherserie_export extends oxAdminDetails {
         }
     }
     
-    protected function _getUsedVouchers($sVoucherserie){
+    protected function _getUsedVouchers($sVoucherserie = null){
         $aData = array();
         $sVoucherView = getViewName("oxvouchers");
         $sOrderView = getViewName("oxorder");
         $sSelect = "Select v.oxvouchernr, o.oxordernr, o.oxorderdate, o.oxbillcompany, o.oxbillfname, o.oxbilllname, o.oxbillemail, o.oxbillstreet, o.oxbillstreetnr, o.oxbillzip, o.oxbillcity, o.oxtotalordersum, v.oxdiscount, o.oxtotalbrutsum "
                 . "from $sVoucherView v left join $sOrderView o on v.oxorderid = o.oxid "
-                . "where v.oxvoucherserieid = '$sVoucherserie' and v.oxorderid != ''";
+                . "where v.oxorderid != ''";
+        if(!empty($sVoucherserie)){
+            $sSelect .= " and v.oxvoucherserieid = '$sVoucherserie'";
+        }
         
         $oDb = oxDb::getDb();
         $oDb->SetFetchMode(ADODB_FETCH_ASSOC);
@@ -62,6 +65,14 @@ class asy_voucherserie_export extends oxAdminDetails {
         }
         
         return $aData;
+    }
+
+    public function exportAllUsedVouchers(){
+        $oConfig = oxRegistry::getConfig();
+        $aData = $this->_getUsedVouchers();
+        if (isset($aData) && is_array($aData) && count($aData) > 0) {
+            $this->_generateCsvFile($aData);
+        }
     }
     
     protected function _generateCsvFile($aData){
