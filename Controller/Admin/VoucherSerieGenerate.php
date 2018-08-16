@@ -8,7 +8,7 @@
  * @link        http://www.alpha-sys.de
  * @author      Fabian Kunkler <fabian.kunkler@alpha-sys.de>   
  * @copyright   (C) Alpha-Sys 2008-2018
- * @version     16.08.2018 3.0
+ * @version     16.08.2018 3.0.0
  */
 
 namespace AlphaSys\AsyAdminVoucher\Controller\Admin;
@@ -29,7 +29,7 @@ class asy_voucherserie_generate extends \OxidEsales\Eshop\Application\Controller
      */
     public function generateVoucherBatch() {
         //get vouchercodes from textarea
-        $oConfig = oxRegistry::getConfig();
+        $oConfig = \OxidEsales\Eshop\Core\Registry::getConfig();
         $sVouchercodes = $oConfig->getRequestParameter("voucher_codes");
         //transform to array
         $aVouchercodes = explode("\n", $sVouchercodes);
@@ -47,7 +47,7 @@ class asy_voucherserie_generate extends \OxidEsales\Eshop\Application\Controller
                         $iCount++;
                     }
                 }
-                $oLang = oxRegistry::getLang();
+                $oLang = \OxidEsales\Eshop\Core\Registry::getLang();
                 $this->_aViewData["sGenerate_Success_Message"] = $iCount++ . $oLang->translateString('ASY_VOUCHER_GENERATED'); //" Codes erfolgreich generiert!";
             }
         }
@@ -57,7 +57,7 @@ class asy_voucherserie_generate extends \OxidEsales\Eshop\Application\Controller
      * generates vouchers with specified characters
      */
     public function generateVoucherRandom() {
-        $oConfig = oxRegistry::getConfig();
+        $oConfig = \OxidEsales\Eshop\Core\Registry::getConfig();
         $iVoucherCount = $oConfig->getRequestParameter("voucher_count");
         if (!$iVoucherCount) {
             $iVoucherCount = 1;
@@ -67,6 +67,7 @@ class asy_voucherserie_generate extends \OxidEsales\Eshop\Application\Controller
         $sVoucherserie = $oConfig->getRequestParameter("oxid");
         $sCharacters = $oConfig->getRequestParameter("voucher_characters");
         $sVoucherPrefix = $oConfig->getRequestParameter("voucher_prefix");
+        $iCount = 0;
         if ($sCharacters && $iVoucherLength && $sVoucherserie) {
             for ($i = 0; $i < $iVoucherCount; $i++) {
                 $sCode = $sVoucherPrefix . $this->_generateRandomString($iVoucherLength, $sCharacters);

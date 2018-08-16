@@ -1,0 +1,20 @@
+{
+    "name": "alphasys/asy_adminvoucher",
+    "description": "voucher generation.",
+    "type": "oxideshop-module",
+    "keywords": ["oxid", "modules", "eShop", "voucher", "admin", "generate"],
+    "homepage": "https://www.alpha-sys.de",
+    "version": "3.0.0",
+    "extra": {
+        "oxideshop": {
+            "target-directory": "asy/asy_adminvoucher"
+        }
+    },
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "AlphaSys\\AsyAdminVoucher\\": "../../../source/modules/asy/asy_adminvoucher"
+        }
+    }
+}

@@ -6,15 +6,17 @@
  * will be prosecuted by civil and criminal law.
  *
  * @link        http://www.alpha-sys.de
- * @author      Fabian Kunkler <fabian.kunkler@alpha-sys.de>   
- * @copyright   (C) Alpha-Sys 2008-2016
- * @version     05.03.2016  2.0
+ * @author      Fabian Kunkler <fabian.kunkler@alpha-sys.de>
+ * @copyright   (C) Alpha-Sys 2008-2018
+ * @version     16.08.2018 3.0.0
  */
+
+namespace AlphaSys\AsyAdminVoucher\Controller\Admin;
 
 /**
  * Voucher generating class.
  */
-class asy_voucherserie_export extends oxAdminDetails {
+class VoucherSerieExportExtended extends \OxidEsales\Eshop\Application\Controller\Admin\AdminDetailsController {
 
     /**
      * used admin template
@@ -32,13 +34,13 @@ class asy_voucherserie_export extends oxAdminDetails {
     public $sExportFileType = "csv";
 
     public function exportUsedVouchers(){
-        $oConfig = oxRegistry::getConfig();
+        $oConfig = \OxidEsales\Eshop\Core\Registry::getConfig();
         $sVoucherserie = $oConfig->getRequestParameter("oxid");
         $aData = $this->_getUsedVouchers($sVoucherserie);
         if (isset($aData) && is_array($aData) && count($aData) > 0) {
             $this->_generateCsvFile($aData);
         }else{
-            $oLang = oxRegistry::getLang();
+            $oLang = \OxidEsales\Eshop\Core\Registry::getLang();
             $this->_aViewData["sMessage"] = $oLang->translateString('ASY_VOUCHER_NO_ORDERS'); //"Keine Bestellungen mit Gutscheinen vorhanden!";
         }
     }
@@ -53,22 +55,22 @@ class asy_voucherserie_export extends oxAdminDetails {
         if(!empty($sVoucherserie)){
             $sSelect .= " and v.oxvoucherserieid = '$sVoucherserie'";
         }
-        
-        $oDb = oxDb::getDb();
-        $oDb->SetFetchMode(ADODB_FETCH_ASSOC);
-        $rs = $oDb->Execute($sSelect);
-        if ($rs !== false && $rs->recordCount() > 0) {
-            while (!$rs->EOF) {
-                array_push($aData, $rs->fields);
-                $rs->MoveNext();
+
+        $oDb = \OxidEsales\Eshop\Core\DatabaseProvider::getDb(\OxidEsales\Eshop\Core\DatabaseProvider::FETCH_MODE_ASSOC);
+
+        $oRs = $oDb->select($sSelect);
+        if ($oRs !== false && $oRs->count() > 0) {
+            while (!$oRs->EOF) {
+                array_push($aData, $oRs->fields);
+                $oRs->fetchRow();
             }
         }
-        
+
         return $aData;
     }
 
     public function exportAllUsedVouchers(){
-        $oConfig = oxRegistry::getConfig();
+        $oConfig = \OxidEsales\Eshop\Core\Registry::getConfig();
         $aData = $this->_getUsedVouchers();
         if (isset($aData) && is_array($aData) && count($aData) > 0) {
             $this->_generateCsvFile($aData);
