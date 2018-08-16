@@ -7,10 +7,10 @@ Oxid admin module which allows to generate voucher codes with your own code stru
 asy_adminvoucher
 
 ### Version ###
-1.7
+3.0.0
 
 ### Oxid-Version ###
-4.5.0 - 4.8.x
+6.x
 
 ### Author ###
 Alpha-Sys
@@ -19,17 +19,17 @@ fabian.kunkler@alpha-sys.de
 www.alpha-sys.de
 
 ### Beschreibung ###
-Das Modul erweitert die Gutscheinfunktionalität im Admin. Es gibt einen neuen Tab bei den Gutscheinserien.
-Über diesen Tab können mehrere Gutscheincodes eingegeben und in einem Lauf generiert werden.
-Dasweiteren können Zufallscodes generiert werden, die vorgegebene Kriterien entsprechen. Man kann angeben welche
-Länge die generierten Codes haben sollen, wie viele Codes generiert werden sollen und aus welchen Zeichen die Codes
+Das Modul erweitert die GutscheinfunktionalitÃ¤t im Admin. Es gibt einen neuen Tab bei den Gutscheinserien.
+Ãœber diesen Tab kÃ¶nnen mehrere Gutscheincodes eingegeben und in einem Lauf generiert werden.
+Dasweiteren kÃ¶nnen Zufallscodes generiert werden, die vorgegebene Kriterien entsprechen. Man kann angeben welche
+LÃ¤nge die generierten Codes haben sollen, wie viele Codes generiert werden sollen und aus welchen Zeichen die Codes
 bestehen sollen.
 
 ### Installation ###
 Kopieren Sie alle Dateien aus dem Ordner "copy_this" in Ihr Shopverzeichnis.
-Melden Sie sich im Admin an und navigieren zu Erweiterungen -> Module. Wählen Sie den Eintrag Gutscheincode-Generierung
+Melden Sie sich im Admin an und navigieren zu Erweiterungen -> Module. WÃ¤hlen Sie den Eintrag Gutscheincode-Generierung
 aus und klicken Sie auf aktivieren. Wenn Sie nun zu den Gutscheinserien navigieren, sollte ein neuer Tab sichtbar sein.
 Ist dies noch nicht der Fall, so leeren Sie bitte den tmp-Ordner des Shops und versuchen es erneut.
 
-### Moduleinträge ###
+### ModuleintrÃ¤ge ###
 voucherserie_main => asy_adminvoucher/admin/asy_adminvoucher__voucherserie_main
