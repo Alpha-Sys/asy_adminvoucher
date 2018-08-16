@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This Software is property of Alpha-Sys and is protected by
  * copyright law - it is NOT Freeware.
@@ -8,15 +7,16 @@
  *
  * @link        http://www.alpha-sys.de
  * @author      Fabian Kunkler <fabian.kunkler@alpha-sys.de>   
- * @copyright   (C) Alpha-Sys 2008-2012
- * @version     OXID eShop PE, EE
- * @version     14.01.2011  1.1
+ * @copyright   (C) Alpha-Sys 2008-2018
+ * @version     16.08.2018 3.0
  */
+
+namespace AlphaSys\AsyAdminVoucher\Controller\Admin;
 
 /**
  * Voucher generating class.
  */
-class asy_voucherserie_generate extends oxAdminDetails {
+class asy_voucherserie_generate extends \OxidEsales\Eshop\Application\Controller\Admin\AdminDetailsController {
 
     /**
      * used admin template
@@ -29,11 +29,12 @@ class asy_voucherserie_generate extends oxAdminDetails {
      */
     public function generateVoucherBatch() {
         //get vouchercodes from textarea
-        $sVouchercodes = oxConfig::getParameter("voucher_codes");
+        $oConfig = oxRegistry::getConfig();
+        $sVouchercodes = $oConfig->getRequestParameter("voucher_codes");
         //transform to array
         $aVouchercodes = explode("\n", $sVouchercodes);
         if (is_array($aVouchercodes) && count($aVouchercodes) > 0) {
-            $sVoucherserie = oxConfig::getParameter("oxid");
+            $sVoucherserie = $oConfig->getRequestParameter("oxid");
             if ($sVoucherserie) {
                 $iCount = 0;
                 foreach ($aVouchercodes as $sCode) {
@@ -46,7 +47,8 @@ class asy_voucherserie_generate extends oxAdminDetails {
                         $iCount++;
                     }
                 }
-                $this->_aViewData["sGenerate_Success_Message"] = $iCount++ . " Codes erfolgreich generiert!";
+                $oLang = oxRegistry::getLang();
+                $this->_aViewData["sGenerate_Success_Message"] = $iCount++ . $oLang->translateString('ASY_VOUCHER_GENERATED'); //" Codes erfolgreich generiert!";
             }
         }
     }
@@ -55,15 +57,16 @@ class asy_voucherserie_generate extends oxAdminDetails {
      * generates vouchers with specified characters
      */
     public function generateVoucherRandom() {
-        $iVoucherCount = oxConfig::getParameter("voucher_count");
+        $oConfig = oxRegistry::getConfig();
+        $iVoucherCount = $oConfig->getRequestParameter("voucher_count");
         if (!$iVoucherCount) {
             $iVoucherCount = 1;
         }
 
-        $iVoucherLength = oxConfig::getParameter("voucher_length");
-        $sVoucherserie = oxConfig::getParameter("oxid");
-        $sCharacters = oxConfig::getParameter("voucher_characters");
-        $sVoucherPrefix = oxConfig::getParameter("voucher_prefix");
+        $iVoucherLength = $oConfig->getRequestParameter("voucher_length");
+        $sVoucherserie = $oConfig->getRequestParameter("oxid");
+        $sCharacters = $oConfig->getRequestParameter("voucher_characters");
+        $sVoucherPrefix = $oConfig->getRequestParameter("voucher_prefix");
         if ($sCharacters && $iVoucherLength && $sVoucherserie) {
             for ($i = 0; $i < $iVoucherCount; $i++) {
                 $sCode = $sVoucherPrefix . $this->_generateRandomString($iVoucherLength, $sCharacters);
@@ -76,7 +79,8 @@ class asy_voucherserie_generate extends oxAdminDetails {
                     $iCount++;
                 }
             }
-            $this->_aViewData["sGenerate_Random_Success_Message"] = $iCount++ . " Codes erfolgreich generiert!";
+            $oLang = oxRegistry::getLang();
+            $this->_aViewData["sGenerate_Random_Success_Message"] = $iCount++ . $oLang->translateString('ASY_VOUCHER_GENERATED'); //" Codes erfolgreich generiert!";
         }
     }
 
