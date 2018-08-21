@@ -8,7 +8,7 @@
  * @link        http://www.alpha-sys.de
  * @author      Fabian Kunkler <fabian.kunkler@alpha-sys.de>   
  * @copyright   (C) Alpha-Sys 2008-2018
- * @version     16.08.2018 3.0.0
+ * @version     21.08.2018 3.0.1
  */
 
 namespace AlphaSys\AsyAdminVoucher\Controller\Admin;
@@ -16,7 +16,7 @@ namespace AlphaSys\AsyAdminVoucher\Controller\Admin;
 /**
  * Voucher generating class.
  */
-class asy_voucherserie_generate extends \OxidEsales\Eshop\Application\Controller\Admin\AdminDetailsController {
+class VoucherSerieGenerate extends \OxidEsales\Eshop\Application\Controller\Admin\AdminDetailsController {
 
     /**
      * used admin template
@@ -40,9 +40,9 @@ class asy_voucherserie_generate extends \OxidEsales\Eshop\Application\Controller
                 foreach ($aVouchercodes as $sCode) {
                     if ($sCode != '' && strlen($sCode) <= 255) {
                         //add new voucher
-                        $oNewVoucher = oxNew("oxvoucher");
-                        $oNewVoucher->oxvouchers__oxvoucherserieid = new oxField($sVoucherserie);
-                        $oNewVoucher->oxvouchers__oxvouchernr = new oxField(trim($sCode));
+                        $oNewVoucher = oxNew(\OxidEsales\Eshop\Application\Model\Voucher::class);
+                        $oNewVoucher->oxvouchers__oxvoucherserieid = new \OxidEsales\Eshop\Core\Field($sVoucherserie);
+                        $oNewVoucher->oxvouchers__oxvouchernr = new \OxidEsales\Eshop\Core\Field(trim($sCode));
                         $oNewVoucher->save();
                         $iCount++;
                     }
@@ -73,14 +73,14 @@ class asy_voucherserie_generate extends \OxidEsales\Eshop\Application\Controller
                 $sCode = $sVoucherPrefix . $this->_generateRandomString($iVoucherLength, $sCharacters);
                 if ($sCode != '' && strlen($sCode) <= 255) {
                     //add new voucher
-                    $oNewVoucher = oxNew("oxvoucher");
-                    $oNewVoucher->oxvouchers__oxvoucherserieid = new oxField($sVoucherserie);
-                    $oNewVoucher->oxvouchers__oxvouchernr = new oxField($sCode);
+                    $oNewVoucher = oxNew(\OxidEsales\Eshop\Application\Model\Voucher::class);
+                    $oNewVoucher->oxvouchers__oxvoucherserieid = new \OxidEsales\Eshop\Core\Field($sVoucherserie);
+                    $oNewVoucher->oxvouchers__oxvouchernr = new \OxidEsales\Eshop\Core\Field($sCode);
                     $oNewVoucher->save();
                     $iCount++;
                 }
             }
-            $oLang = oxRegistry::getLang();
+            $oLang = \OxidEsales\Eshop\Core\Registry::getLang();
             $this->_aViewData["sGenerate_Random_Success_Message"] = $iCount++ . $oLang->translateString('ASY_VOUCHER_GENERATED'); //" Codes erfolgreich generiert!";
         }
     }

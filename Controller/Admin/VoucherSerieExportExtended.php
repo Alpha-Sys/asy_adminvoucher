@@ -8,7 +8,7 @@
  * @link        http://www.alpha-sys.de
  * @author      Fabian Kunkler <fabian.kunkler@alpha-sys.de>
  * @copyright   (C) Alpha-Sys 2008-2018
- * @version     16.08.2018 3.0.0
+ * @version     21.08.2018 3.0.1
  */
 
 namespace AlphaSys\AsyAdminVoucher\Controller\Admin;

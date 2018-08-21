@@ -7,7 +7,7 @@ Oxid admin module which allows to generate voucher codes with your own code stru
 asy_adminvoucher
 
 ### Version ###
-3.0.0
+3.0.1
 
 ### Oxid-Version ###
 6.x
